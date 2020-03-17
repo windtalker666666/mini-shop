@@ -1,0 +1,70 @@
+<!--微页面-->
+<view id="microData">
+    <block wx:if="{{microData && microData.pages && microData.pages.length}}">
+        <view wx:for="{{microData.pages}}" wx:key="{{index}}">
+            <view wx:if="{{item.name == 'micro_page_componet_search'}}">
+                <!--搜索按钮-->
+                <view class="banner">
+                    <view class="search">
+                        <div class="menu-box" bindtap="jumpMenu">
+                            <i class="iconfont icon-fenzu">
+                                
+                            </i>
+                        </div>
+                        <view class="search_box">
+                            <input type="text" value="" bindinput="search" disabled confirm-type="search" bindtap="jumpToSearch"/>
+                            <icon type="search" size="20"/>
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!--轮播图组件-->
+            <view wx:if="{{item.name == 'micro_page_componet_slide' && item.value && item.value.length}}">
+                <indexBanner banner-data="{{item.value}}" screen-width="{{screenWidth}}"></indexBanner>
+            </view>
+            <!--优惠券组件-->
+            <view wx:if="{{item.name == 'micro_page_componet_coupon' && item.value && item.value.length}}">
+                <indexCoupon index-coupon="{{item.value}}" config="{{config}}" bindmyGetCoupon="getCoupon" data-id="{{item.value[0].associate_id}}"></indexCoupon>
+            </view>
+            <!--套餐-->
+            <view wx:if="{{item.name == 'micro_page_componet_suit' && item.value && item.value.length}}">
+                <indexSuit suit-data="{{item.value}}" index-data="{{indexData}}"></indexSuit>
+            </view>
+            <!--拼团-->
+            <!--快捷导航-->
+            <view wx:if="{{item.name == 'micro_page_componet_nav' && item.value && item.value.length}}">
+                <indexNav nav-data="{{item.value}}"></indexNav>
+            </view>
+            <!--图片魔方-->
+            <view  wx:if="{{item.name == 'micro_page_componet_cube' && item.value && item.value.length}}">
+                <indexCube cube-data="{{item.value}}" show-type="{{item.type}}" cube-title="{{item.title}}"></indexCube>
+            </view>
+            <!--分类商品-->
+            <view  wx:if="{{item.name == 'micro_page_componet_category' && item.value && item.value.length}}">
+                <indexCategory category-data="{{item.value}}"></indexCategory>
+            </view>
+            <!--商品分组-->
+            <view  wx:if="{{item.name == 'micro_page_componet_goods_group' && item.value && item.value.length}}">
+                <indexGrouping grouping-data="{{item.value}}"></indexGrouping>
+            </view>
+        </view>
+    </block>
+
+    <view class="ibrand-author" wx:if="{{author}}" bindtap="jumpAuthor">
+        <i class="iconfont icon-dibu"></i>
+    </view>
+
+<!--    <view class="author" wx:if="{{author}}">
+        <image mode="widthFix" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/mier.png"></image>
+        <view>
+            湘ICP备17006292号
+        </view>
+        <view>
+            ©️ 湖南米尔版权所有
+        </view>
+        &lt;!&ndash;iBrand社交新零售 · 提供技术支持&ndash;&gt;
+    </view>-->
+    <preview show="{{isShow}}" list="{{goodsList}}" bind:clone="isClone"></preview>
+
+</view>

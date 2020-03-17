@@ -1,0 +1,15 @@
+@import "assets/css/1px.wxss";
+@import "assets/css/font.wxss";
+
+
+page {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    background-color: #F3F3F3;
+    line-height: 1.6;
+}
+view{
+    box-sizing: border-box;
+ }
